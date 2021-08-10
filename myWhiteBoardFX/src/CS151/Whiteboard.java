@@ -47,7 +47,7 @@ public class Whiteboard extends Application {
 	private java.util.List<ObjectOutputStream> outputs = new ArrayList<ObjectOutputStream>();
 	private Canvas canvas;
 	private ArrayList<Button> buttons;
-	private Button rect, oval, line, text, colorPicker,brush, toFront, toBack, remove, fontButton;
+	private Button rect, oval, line, text,doodle, colorPicker,brush, toFront, toBack, remove, fontButton;
 	private TextField textInput;
 	private ComboBox<String> fonts;
 	private TableView<DShapeModel> tv;
@@ -162,6 +162,17 @@ public class Whiteboard extends Application {
 				BrushSize bw = new BrushSize();
 
 				double val= bw.display();
+
+
+			}
+		});
+
+		doodle.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				CS151.FreeDraw fd = new CS151.FreeDraw();
+
+				fd.display();
 
 
 			}
@@ -345,11 +356,12 @@ public class Whiteboard extends Application {
 
 		colorPicker = new Button("Select Color");
 		brush = new Button("Select Size");
+		doodle = new Button("Doodle");
 
 		GraphicsContext gc;
 
 		HBox line2 = new HBox(BOX_SIZE);
-		line2.getChildren().addAll(colorPicker,brush);
+		line2.getChildren().addAll(colorPicker,brush,doodle);
 
 
 		textInput = new TextField("");
